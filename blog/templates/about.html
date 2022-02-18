@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>{% block title %}About Me{% endblock %}</title>
+	</head>
+
+{% block page_content %}
+<body>
+	<div class="main-wrapper">
+				
+		<article class="about-section py-5">
+			<div class="container">
+				<h2 class="title mb-3">About Me</h2>
+				
+				<p>I am currently a Computer Science student at Old Dominion University. I received an Associate of Science with a specialization in Computer Science from Tidewater Community College in 2021 and have 
+					chosen to pursue a bachelor's in Computer Science from ODU. A designer at heart,  I live to build and engineer things. I have a background working in many types of jobs and I prefer a 
+					diverse work environment. My experience with programming started when I learned Python a couple of 
+					years ago, which inspired me to pursue a degree in Computer Science. 
+				</p>
+				
+				<h5 class="mt-5">About The Blog</h5>
+				<p>The main goal of this site is to create a log of the projects I've done. </p>
+				<h5 class="mt-5">My Skills and Experiences</h5>
+				<p>Since I started at TCC in 2019, with the goal of building a career, I have actively sought to improve my programming experience and skill both in and outside of the classroom. In school I learned C++, but 
+					meanwhile, I was also learning Python, embedded systems and IoT platforms such as ESP32, Thingsboard, and Arduino. In 2020, I collaborated with colleagues at ODU and co-authored a <a href=https://doi.org/10.1016/j.ocecoaman.2021.105533>paper</a> 
+					about the pandemic. During the height of the pandemic, we analyed webcam data using GIS tools to quantify social-distancing and to answer the question: "Is it safer at the beach?" My role was data acquisition and formatting; I wrote the web scraper that periodically captured video from a live webcam stream, then captured 
+				    frames from the video and saved them. I am currently available for hire for tasks that require coding such as web scraping, testing with Selenium, automation and scripting. </p>
+				<br>
+				<p>Currently, I work for the ODU Computer Science Systems Group. This is a student-run IT team that upkeeps the backend and network of the CS department. </p>
+				<h5 class="mt-5">Hobbies and Side Projects</h5>
+				<p>I have many side projects and hobbies including music production, guitar, and gardening. </p>
+				
+				<figure><a href="https://made4dev.com"><img class="img-fluid" src="{% static 'images/promo-banner.jpg' %}" alt="image"></a></figure>
+			</div>
+		</article><!--//about-section-->
+		
+		<section class="cta-section theme-bg-light py-5">
+			<div class="container text-center">
+				<h2 class="heading">Newsletter</h2>
+				<div class="intro">Welcome to my blog. Subscribe and get my latest blog post in your inbox.</div>
+				<form action="index/about/" class="signup-form form-inline justify-content-center pt-3" method="post">
+					{% csrf_token %}						
+					<div class="form-group">
+						<label class="sr-only" for="semail">Your email</label>
+						{{ form.email }}
+					</div>
+					<button type="submit" class="btn btn-primary">Subscribe</button>
+				</form>
+			</div><!--//container-->
+		</section>
+		
+	
+
+	</div><!--//main-wrapper-->
+</body>
+{% endblock %}      
+

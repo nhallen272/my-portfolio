@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{% block title %}Projects{% endblock %}</title>
+</head> 
+
+{% block page_content %}
+                
+    <div class="main-wrapper">
+		<section class="cta-section theme-bg-light py-4">
+			<div class="container text-center">
+				<h2 class="heading">Projects</h2>
+			</div>
+		</section>
+	  
+	    <section class="blog-list px-3 py-5 p-md-5">
+            <div class="container">
+                <div class="row">
+                    {% for project in projects %}
+                        <div class="col-md-4">
+                            <div class="card mb-2">
+                                <img class="card-img-top" src="{{ project.imageURL }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ project.title }}</h5>
+                                    {% for category in project.categories.all %}
+                                        <a href="{% url 'project_category' category.title %}" class="badge badge-pill badge-secondary">{{ category.title }}</a>
+                                    {% endfor %}
+                                    <p class="card-text">{{ project.description }}</p>
+                                    <a href="{% url 'project_detail' project.pk %}"
+                                       class="more-link">Read More &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                </div>
+            </div>
+        </section>
+	    
+    
+    </div><!--//main-wrapper-->
+    
+     
+{% endblock %}
+
+
