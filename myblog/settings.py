@@ -21,13 +21,13 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'w)mq#)%f*1wgup1)d#o#aa^!_c)2%$zda%&nqf9m%rk9^-ahtq'
+SECRET_KEY = '2__*^wako36%6rp8v!osknsd(sqkqz1m-h(99b^eq=ik01$2$^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 #'172.18.6.184',
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic',
     'blog',
 ]
 
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 #CSRF_TRUSTED_ORIGINS = ['http://172.18.6.182','http://172.18.6.181']
@@ -88,6 +90,9 @@ DATABASES = {
 
     }
 }
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 
 
@@ -134,5 +139,7 @@ STATICFILES_DIRS = [
     join(BASE_DIR, "blog/static"),
 ]
 
-
+#STATIC_ROOT = join(BASE_DIR, 'static')
 STATIC_ROOT = join(BASE_DIR, 'static')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
