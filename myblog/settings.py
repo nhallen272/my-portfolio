@@ -134,12 +134,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+#STATIC_ROOT = join(BASE_DIR, 'static')
+STATIC_ROOT = join(BASE_DIR, 'staticfiles')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 STATICFILES_DIRS = [
+    join(BASE_DIR, "static"),
     join(BASE_DIR, "myblog/static"),
     join(BASE_DIR, "blog/static"),
 ]
-
-#STATIC_ROOT = join(BASE_DIR, 'static')
-STATIC_ROOT = join(BASE_DIR, 'static')
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
