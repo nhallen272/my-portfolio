@@ -135,7 +135,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    join(BASE_DIR, "staticfiles"),
+    join(BASE_DIR, "myblog/static"),
     join(BASE_DIR, "blog/static"),
 ]
 
