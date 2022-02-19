@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://172.18.6.182','http://172.18.6.181']
+#CSRF_TRUSTED_ORIGINS = ['http://172.18.6.182','http://172.18.6.181']
 ROOT_URLCONF = 'myblog.urls'
 
 TEMPLATES = [
